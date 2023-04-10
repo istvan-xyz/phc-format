@@ -1,6 +1,6 @@
 {
     "name": "@istvan.xyz/phc-format",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "An implementation of the PHC format.",
     "main": "index.js",
     "scripts": {
