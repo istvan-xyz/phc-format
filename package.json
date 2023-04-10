@@ -1,0 +1,221 @@
+{
+    "name": "@istvan.xyz/phc-format",
+    "version": "0.0.1",
+    "description": "An implementation of the PHC format.",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc",
+        "test": "eslint --ext ts --quiet ./src && tsc --noEmit && cspell \"**/*\" --no-progress && npm run unit-test",
+        "format": "eslint --ext .js,.ts,.tsx src --fix && prettier --write \"src/**/*.{ts,tsx,json}\"",
+        "unit-test": "TZ=UTC CI=1 vitest run",
+        "prepare": "husky install",
+        "postversion": "git push --tags && git push",
+        "test-watch": "vitest --watch --changed",
+        "test-watch-all": "vitest --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/istvan-xyz/phc-format.git"
+    },
+    "keywords": [
+        "phc",
+        "encode",
+        "decode"
+    ],
+    "author": "István Antal <istvan@antal.xyz>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/istvan-xyz/phc-format/issues"
+    },
+    "homepage": "https://github.com/istvan-xyz/phc-format#readme",
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.36.1",
+        "@typescript-eslint/parser": "^5.36.1",
+        "cspell": "^6.1.2",
+        "eslint": "^8.27.0",
+        "eslint-config-airbnb-base": "^15.0.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "husky": "^8.0.1",
+        "prettier": "^2.4.1",
+        "typescript": "^5.0.3",
+        "vitest": "^0.29.2"
+    },
+    "eslintConfig": {
+        "parser": "@typescript-eslint/parser",
+        "parserOptions": {
+            "project": "./tsconfig.json"
+        },
+        "env": {
+            "browser": true,
+            "es6": true,
+            "node": true
+        },
+        "extends": [
+            "airbnb-base",
+            "plugin:@typescript-eslint/recommended",
+            "plugin:prettier/recommended"
+        ],
+        "plugins": [
+            "@typescript-eslint",
+            "prettier"
+        ],
+        "rules": {
+            "prettier/prettier": "error",
+            "max-len": [
+                "error",
+                180
+            ],
+            "comma-dangle": [
+                "error",
+                "always-multiline"
+            ],
+            "arrow-parens": [
+                "error",
+                "as-needed"
+            ],
+            "eqeqeq": "error",
+            "quote-props": [
+                "error",
+                "as-needed"
+            ],
+            "no-return-assign": "error",
+            "@typescript-eslint/no-empty-function": 0,
+            "@typescript-eslint/explicit-function-return-type": 0,
+            "@typescript-eslint/array-type": "error",
+            "@typescript-eslint/consistent-type-assertions": "error",
+            "@typescript-eslint/no-explicit-any": [
+                "warn"
+            ],
+            "@typescript-eslint/no-inferrable-types": "error",
+            "@typescript-eslint/no-misused-new": "error",
+            "@typescript-eslint/no-namespace": "error",
+            "@typescript-eslint/no-var-requires": "off",
+            "@typescript-eslint/prefer-namespace-keyword": "error",
+            "@typescript-eslint/triple-slash-reference": "error",
+            "@typescript-eslint/type-annotation-spacing": "error",
+            "@typescript-eslint/await-thenable": "error",
+            "@typescript-eslint/consistent-type-definitions": "error",
+            "@typescript-eslint/no-floating-promises": "error",
+            "@typescript-eslint/no-require-imports": "off",
+            "@typescript-eslint/no-unnecessary-qualifier": "error",
+            "@typescript-eslint/no-unnecessary-type-arguments": "error",
+            "@typescript-eslint/prefer-for-of": "error",
+            "@typescript-eslint/quotes": [
+                "error",
+                "single",
+                {
+                    "avoidEscape": true
+                }
+            ],
+            "@typescript-eslint/semi": [
+                "error",
+                "always"
+            ],
+            "@typescript-eslint/strict-boolean-expressions": "off",
+            "@typescript-eslint/unbound-method": "off",
+            "@typescript-eslint/unified-signatures": "error",
+            "@typescript-eslint/restrict-plus-operands": 0,
+            "@typescript-eslint/no-this-alias": 0,
+            "@typescript-eslint/camelcase": 0,
+            "@typescript-eslint/promise-function-async": 0,
+            "@typescript-eslint/no-unused-vars": "error",
+            "@typescript-eslint/no-parameter-properties": 0,
+            "import/prefer-default-export": 0,
+            "no-use-before-define": 0,
+            "object-curly-newline": 0,
+            "implicit-arrow-linebreak": 0,
+            "no-plusplus": 0,
+            "no-await-in-loop": 0,
+            "no-continue": 0,
+            "@typescript-eslint/explicit-module-boundary-types": 0,
+            "no-shadow-restricted-names": 0,
+            "import/extensions": [
+                "error",
+                "always",
+                {
+                    "tsx": "never",
+                    "ts": "never",
+                    "js": "never",
+                    "mjs": "never"
+                }
+            ],
+            "@typescript-eslint/ban-types": [
+                "error",
+                {
+                    "types": {
+                        "String": {
+                            "message": "Use string instead",
+                            "fixWith": "string"
+                        },
+                        "Boolean": {
+                            "message": "Use boolean instead",
+                            "fixWith": "boolean"
+                        },
+                        "Number": {
+                            "message": "Use number instead",
+                            "fixWith": "number"
+                        },
+                        "Symbol": {
+                            "message": "Use symbol instead",
+                            "fixWith": "symbol"
+                        },
+                        "Function": {
+                            "message": "The `Function` type accepts any function-like value.\nIt provides no type safety when calling the function, which can be a common source of bugs.',\nIt also accepts things like class declarations, which will throw at runtime as they will not be called with `new`.\nIf you are expecting the function to accept certain arguments, you should explicitly define the function shape."
+                        },
+                        "Object": {
+                            "message": "The `Object` type actually means \"any non-nullish value\", so it is marginally better than `unknown`.\n- If you want a type meaning \"any object\", you probably want `Record<string, unknown>` instead.\n- If you want a type meaning \"any value\", you probably want `unknown` instead."
+                        },
+                        "object": {
+                            "message": "The `object` type is currently hard to use ([see this issue](https://github.com/microsoft/TypeScript/issues/21732)).\nConsider using `Record<string, unknown>` instead, as it allows you to more easily inspect and use the keys."
+                        }
+                    },
+                    "extendDefaults": false
+                }
+            ],
+            "@typescript-eslint/consistent-type-imports": [
+                "error",
+                {
+                    "prefer": "type-imports"
+                }
+            ],
+            "no-restricted-syntax": [
+                "error",
+                {
+                    "selector": "ForInStatement",
+                    "message": "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array."
+                },
+                {
+                    "selector": "LabeledStatement",
+                    "message": "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand."
+                },
+                {
+                    "selector": "WithStatement",
+                    "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
+                }
+            ],
+            "import/no-extraneous-dependencies": 0
+        },
+        "settings": {
+            "import/resolver": {
+                "node": {
+                    "extensions": [
+                        ".js",
+                        ".jsx",
+                        ".ts",
+                        ".tsx"
+                    ]
+                }
+            }
+        }
+    },
+    "prettier": {
+        "trailingComma": "all",
+        "tabWidth": 4,
+        "semi": true,
+        "printWidth": 120,
+        "singleQuote": true,
+        "arrowParens": "avoid"
+    }
+}

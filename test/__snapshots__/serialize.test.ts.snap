@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should throw errors if trying to serialize with invalid arguments 1`] = `"id must satisfy /^[a-z0-9-]{1,32}$/"`;
+
+exports[`should throw errors if trying to serialize with invalid arguments 2`] = `"params names must satisfy /^[a-z0-9-]{1,32}$/"`;
+
+exports[`should throw errors if trying to serialize with invalid arguments 3`] = `"params values must satisfy /^[a-zA-Z0-9/+.-]+$/"`;
+
+exports[`should throw errors if trying to serialize with invalid arguments 4`] = `"version must be a positive integer number"`;

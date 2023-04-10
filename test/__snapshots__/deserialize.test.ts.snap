@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should thow errors if trying to deserialize an invalid phc string 1`] = `"phcString must be a non-empty string"`;
+
+exports[`should thow errors if trying to deserialize an invalid phc string 2`] = `"phcString must contain a $ as first char"`;
+
+exports[`should thow errors if trying to deserialize an invalid phc string 3`] = `"phcString contains too many fields: 5/4"`;
+
+exports[`should thow errors if trying to deserialize an invalid phc string 4`] = `"phcString must contain a $ as first char"`;
+
+exports[`should thow errors if trying to deserialize an invalid phc string 5`] = `"id must satisfy /^[a-z0-9-]{1,32}$/"`;
+
+exports[`should thow errors if trying to deserialize an invalid phc string 6`] = `"params names must satisfy /^[a-z0-9-]{1,32}$/"`;
+
+exports[`should thow errors if trying to deserialize an invalid phc string 7`] = `"params values must satisfy /^[a-zA-Z0-9/+.-]+$/"`;
+
+exports[`should thow errors if trying to deserialize an invalid phc string 8`] = `"params must be in the format name=value"`;
+
+exports[`should thow errors if trying to deserialize an invalid phc string 9`] = `"phcString contains unrecognized fields: unrecognized"`;
+
+exports[`should thow errors if trying to deserialize an invalid phc string 10`] = `"phcString contains too many fields: 5/4"`;
+
+exports[`should thow errors if trying to deserialize an invalid phc string 11`] = `"phcString contains unrecognized fields: unrecognized"`;
