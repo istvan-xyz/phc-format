@@ -85,10 +85,7 @@ export const deserialized: {
     {
         id: 'argon2i',
         params: { m: 120, t: 5000, p: 2 },
-        salt: Buffer.from(
-            'BwUgJHHQaynE+a4nZrYRzOllGSjjxuxNXxyNRUtI6Dlw/zlbt6PzOL8Onfqs6TcG',
-            'base64'
-        ),
+        salt: Buffer.from('BwUgJHHQaynE+a4nZrYRzOllGSjjxuxNXxyNRUtI6Dlw/zlbt6PzOL8Onfqs6TcG', 'base64'),
     },
     {
         id: 'argon2i',
@@ -115,28 +112,19 @@ export const deserialized: {
         id: 'argon2i',
         params: { m: 120, t: 5000, p: 2 },
         salt: Buffer.from('4fXXG0spB92WPB1NitT8/OH0VKI', 'base64'),
-        hash: Buffer.from(
-            'iPBVuORECm5biUsjq33hn9/7BKqy9aPWKhFfK2haEsM',
-            'base64'
-        ),
+        hash: Buffer.from('iPBVuORECm5biUsjq33hn9/7BKqy9aPWKhFfK2haEsM', 'base64'),
     },
     {
         id: 'argon2i',
         params: { m: 120, t: 5000, p: 2, keyid: 'Hj5+dsK0' },
         salt: Buffer.from('4fXXG0spB92WPB1NitT8/OH0VKI', 'base64'),
-        hash: Buffer.from(
-            'iPBVuORECm5biUsjq33hn9/7BKqy9aPWKhFfK2haEsM',
-            'base64'
-        ),
+        hash: Buffer.from('iPBVuORECm5biUsjq33hn9/7BKqy9aPWKhFfK2haEsM', 'base64'),
     },
     {
         id: 'argon2i',
         params: { m: 120, t: 5000, p: 2, data: 'sRlHhRmKUGzdOmXn01XmXygd5Kc' },
         salt: Buffer.from('4fXXG0spB92WPB1NitT8/OH0VKI', 'base64'),
-        hash: Buffer.from(
-            'iPBVuORECm5biUsjq33hn9/7BKqy9aPWKhFfK2haEsM',
-            'base64'
-        ),
+        hash: Buffer.from('iPBVuORECm5biUsjq33hn9/7BKqy9aPWKhFfK2haEsM', 'base64'),
     },
     {
         id: 'argon2i',
@@ -148,10 +136,7 @@ export const deserialized: {
             data: 'sRlHhRmKUGzdOmXn01XmXygd5Kc',
         },
         salt: Buffer.from('4fXXG0spB92WPB1NitT8/OH0VKI', 'base64'),
-        hash: Buffer.from(
-            'iPBVuORECm5biUsjq33hn9/7BKqy9aPWKhFfK2haEsM',
-            'base64'
-        ),
+        hash: Buffer.from('iPBVuORECm5biUsjq33hn9/7BKqy9aPWKhFfK2haEsM', 'base64'),
     },
     {
         id: 'argon2i',
@@ -177,7 +162,7 @@ export const deserialized: {
         salt: Buffer.from('iHSDPHzUhPzK7rCcJgOFfg', 'base64'),
         hash: Buffer.from(
             'J4moa2MM0/6uf3HbY2Tf5Fux8JIBTwIhmhxGRbsY14qhTltQt+Vw3b7tcJNEbk8ium8AQfZeD4tabCnNqfkD1g',
-            'base64'
+            'base64',
         ),
     },
     {
@@ -190,7 +175,7 @@ export const deserialized: {
         salt: Buffer.from('', 'hex'),
         hash: Buffer.from(
             'd9ZXYjhleyA7GcpCwYoEl/FrSETjB0ro39/6P+3iFEL80Aad7QlI+DJqdToPyB8X6NPg+y4NNijPNeIMONGJBg',
-            'base64'
+            'base64',
         ),
     },
     {
@@ -206,7 +191,7 @@ export const deserialized: {
         salt: Buffer.from('iHSDPHzUhPzK7rCcJgOFfg', 'base64'),
         hash: Buffer.from(
             'J4moa2MM0/6uf3HbY2Tf5Fux8JIBTwIhmhxGRbsY14qhTltQt+Vw3b7tcJNEbk8ium8AQfZeD4tabCnNqfkD1g',
-            'base64'
+            'base64',
         ),
     },
 ];
@@ -224,7 +209,7 @@ export const bufferExample = {
     salt: Buffer.from('iHSDPHzUhPzK7rCcJgOFfg', 'base64'),
     hash: Buffer.from(
         'J4moa2MM0/6uf3HbY2Tf5Fux8JIBTwIhmhxGRbsY14qhTltQt+Vw3b7tcJNEbk8ium8AQfZeD4tabCnNqfkD1g',
-        'base64'
+        'base64',
     ),
 };
 

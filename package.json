@@ -2,9 +2,11 @@
     "name": "@istvan.xyz/phc-format",
     "version": "0.0.3",
     "description": "An implementation of the PHC format.",
-    "main": "index.js",
+    "main": "dist/index.cjs",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
     "scripts": {
-        "build": "tsc",
+        "build": "tsup src/index.ts --dts --format esm,cjs --sourcemap",
         "test": "eslint --ext ts --quiet ./src && tsc --noEmit && cspell \"**/*\" --no-progress && npm run unit-test",
         "format": "eslint --ext .js,.ts,.tsx src --fix && prettier --write \"src/**/*.{ts,tsx,json}\"",
         "unit-test": "TZ=UTC CI=1 vitest run",
@@ -39,8 +41,23 @@
         "eslint-plugin-prettier": "^4.2.1",
         "husky": "^8.0.1",
         "prettier": "^2.4.1",
+        "tsup": "^8.5.0",
         "typescript": "^5.0.3",
         "vitest": "^0.29.2"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.cjs"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "sideEffects": false,
+    "engines": {
+        "node": ">=18.17"
     },
     "eslintConfig": {
         "parser": "@typescript-eslint/parser",

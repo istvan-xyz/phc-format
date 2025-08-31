@@ -1,3 +1,4 @@
+import { asRuntimeBytes, base64ToBytes } from './base64';
 import { idRegex, nameRegex, valueRegex } from './patterns';
 
 const b64Regex = /^([a-zA-Z0-9/+.-]+|)$/;
@@ -70,17 +71,17 @@ export default function deserialize(phcString: string) {
         version = parseInt((versionString.match(versionRegex) as RegExpMatchArray)[1], 10);
     }
 
-    let hash;
-    let salt;
+    let hash: Uint8Array | undefined;
+    let salt: Uint8Array | undefined;
     if (b64Regex.test(fields[fields.length - 1])) {
         if (fields.length > 1 && b64Regex.test(fields[fields.length - 2])) {
             // Parse Hash
-            hash = Buffer.from(fields.pop() as string, 'base64');
+            hash = asRuntimeBytes(base64ToBytes(fields.pop() as string));
             // Parse Salt
-            salt = Buffer.from(fields.pop() as string, 'base64');
+            salt = asRuntimeBytes(base64ToBytes(fields.pop() as string));
         } else {
             // Parse Salt
-            salt = Buffer.from(fields.pop() as string, 'base64');
+            salt = asRuntimeBytes(base64ToBytes(fields.pop() as string));
         }
     }
 
@@ -125,8 +126,8 @@ export default function deserialize(phcString: string) {
         id?: string;
         version?: number;
         params?: { [key: string]: unknown };
-        salt?: Buffer;
-        hash?: Buffer;
+        salt?: Uint8Array;
+        hash?: Uint8Array;
     } = { id };
 
     if (version) {

@@ -1,8 +1,8 @@
-import { test, expect } from 'vitest';
+import { expect, test } from 'vitest';
 import { deserialize } from '../src';
-import { serialized, deserialized } from './fixtures';
+import { deserialized, serialized } from './fixtures';
 
-test('should deserialize correct phc strings', t => {
+test('should deserialize correct phc strings', () => {
     serialized.forEach((_, i) => {
         expect(deserialize(serialized[i])).toEqual(deserialized[i]);
     });
@@ -47,15 +47,11 @@ test('should thow errors if trying to deserialize an invalid phc string', () => 
     }).toThrowErrorMatchingSnapshot();
 
     expect(() => {
-        deserialize(
-            '$argon2i$unrecognized$v=19$m=120,t=5000,p=2$EkCWX6pSTqWruiR0'
-        );
+        deserialize('$argon2i$unrecognized$v=19$m=120,t=5000,p=2$EkCWX6pSTqWruiR0');
     }).toThrowErrorMatchingSnapshot();
 
     expect(() => {
-        deserialize(
-            '$argon2i$v=19$unrecognized$m=120,t=5000,p=2$EkCWX6pSTqWruiR0'
-        );
+        deserialize('$argon2i$v=19$unrecognized$m=120,t=5000,p=2$EkCWX6pSTqWruiR0');
     }).toThrowErrorMatchingSnapshot();
 });
 // cspell:enable

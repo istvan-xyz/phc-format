@@ -1,4 +1,5 @@
 // cspell:words phcobj, phcstr, Valto, strpar, pchstr, maxf, parstr
+import { bytesToBase64 } from './base64';
 import { idRegex, nameRegex, valueRegex } from './patterns';
 
 function objectToKeyValueString(object: { [key: string]: unknown }) {
@@ -21,9 +22,9 @@ function objectToKeyValueString(object: { [key: string]: unknown }) {
 export default function serialize(opts: {
     id: string;
     version?: number;
-    params?: { [key: string]: string | Buffer | number };
-    salt?: Buffer;
-    hash?: Buffer;
+    params?: { [key: string]: string | Uint8Array | number };
+    salt?: Uint8Array;
+    hash?: Uint8Array;
 }) {
     const fields = [''];
 
@@ -44,20 +45,21 @@ export default function serialize(opts: {
     // Parameter Validation
     const { params } = opts;
     if (typeof params !== 'undefined') {
-        const pk = Object.keys(params);
+        const safeParams: { [key: string]: string | Uint8Array | number } = { ...params };
+        const pk = Object.keys(safeParams);
         if (!pk.every(p => nameRegex.test(p))) {
             throw new TypeError(`params names must satisfy ${nameRegex}`);
         }
 
-        // Convert Numbers into Numeric Strings and Buffers into B64 encoded strings.
+        // Convert Numbers into Numeric Strings and Uint8Array into B64 encoded strings.
         pk.forEach(k => {
-            if (typeof params[k] === 'number') {
-                params[k] = (params[k] as string).toString();
-            } else if (Buffer.isBuffer(params[k])) {
-                [params[k]] = (params[k] as Buffer).toString('base64').split('=');
+            if (typeof safeParams[k] === 'number') {
+                safeParams[k] = String(safeParams[k] as number);
+            } else if (safeParams[k] instanceof Uint8Array) {
+                safeParams[k] = bytesToBase64(safeParams[k] as Uint8Array);
             }
         });
-        const pv = Object.values(params);
+        const pv = Object.values(safeParams);
         if (!pv.every(v => typeof v === 'string')) {
             throw new TypeError('params values must be strings');
         }
@@ -66,20 +68,20 @@ export default function serialize(opts: {
             throw new TypeError(`params values must satisfy ${valueRegex}`);
         }
 
-        const strpar = objectToKeyValueString(params);
+        const strpar = objectToKeyValueString(safeParams);
         fields.push(strpar);
     }
 
     if (typeof opts.salt !== 'undefined') {
-        fields.push(opts.salt.toString('base64').split('=')[0]);
+        fields.push(bytesToBase64(opts.salt));
 
         if (typeof opts.hash !== 'undefined') {
             // Hash Validation
-            if (!Buffer.isBuffer(opts.hash)) {
-                throw new TypeError('hash must be a Buffer');
+            if (!(opts.hash instanceof Uint8Array)) {
+                throw new TypeError('hash must be a Uint8Array');
             }
 
-            fields.push(opts.hash.toString('base64').split('=')[0]);
+            fields.push(bytesToBase64(opts.hash));
         }
     }
 
