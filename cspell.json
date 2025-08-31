@@ -1,11 +1,7 @@
 {
     "version": "0.2",
     "language": "en,de,fr,it",
-    "dictionaries": [
-        "german",
-        "corp-terms",
-        "fonts"
-    ],
+    "dictionaries": ["german", "corp-terms", "fonts"],
     "words": [
         "Antal",
         "camelcase",
@@ -17,7 +13,10 @@
         "postversion",
         "tsbuildinfo",
         "tscache",
-        "typeorm"
+        "typeorm",
+        "unpadded",
+        "Deno",
+        "tsup"
     ],
     "ignorePaths": [
         "test/fixtures.ts",
